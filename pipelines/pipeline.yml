@@ -1,0 +1,29 @@
+name: 'myTrainingPipeline'
+data:
+     pipelineData1
+steps:
+  preprocess:
+    moduleName: 'BatchStep'
+    computeName: 'cpu'
+    cmd: 'unzip data/Posts.xml.zip -d data/'
+    deps:
+      path: data/Posts.xml.zip
+    outs:
+    - cache: true
+      path: data/Posts.xml
+  train:
+    moduleName: 'PythonScriptStep'
+    computeName: 'cpu'
+    cmd: 'python train.py'
+    deps:
+      path: data/Posts.xml.zip
+    outs:
+      path: data/Posts.xml
+  validate:
+    moduleName: 'PythonScriptStep'
+    computeName: 'cpu'
+    parameters:
+      data_file: 'path'
+    cmd: 'python validate.py {data_file}'
+
+pipeline: [preprocess,train,validate]

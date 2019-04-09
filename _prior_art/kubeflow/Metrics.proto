@@ -1,0 +1,141 @@
+/*
+Copyright 2019 The Kubeflow Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+syntax = "proto3";
+
+package protobuf;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+// Instead of have project_uuid, run_uuid and etc, we have uuid with type
+// information.
+message UUID {
+  string value = 1;
+  Type type = 2;
+  enum Type {
+    UNKNOWN = 0;
+    PROJECT = 1;
+    RUN = 2;
+    ARTIFACT_CONNECTION = 3;
+    DATA_METADATA = 4;
+    MODEL_METADATA = 5;
+    EXECUTABLE_METADATA = 6;
+    METRICS = 7;
+  }
+}
+
+message Project {
+  UUID id = 1;
+  string name = 2;
+  string description = 3;
+  repeated UUID runs = 4;
+  repeated UUID artifacts = 5;
+  map<string, string> annotations = 6;
+}
+
+message Run {
+  UUID id = 1;
+  string name = 2;
+  string description = 3;
+  UUID project = 4;
+  repeated UUID artifacts = 5;
+  map<string, string> annotations = 6;
+}
+
+message ArtifactConnection {
+  UUID id = 1;
+  UUID first_artifact = 2;
+  UUID second_artifact = 3;
+  UUID run = 4;
+  UUID project = 5;
+}
+
+message ArtifactMetadata {
+  oneof metadata {
+    DataMetadata data_metadata = 1;
+    ExecutableMetadata executable_metadata = 2;
+    ModelMetadata model_metadata = 3;
+  }
+}
+
+message DataMetadata {
+  UUID id = 1;
+  string name = 2;
+  string description  = 3;
+  string source  = 4;
+  string query  = 5;
+  string version  = 6;
+  google.protobuf.Timestamp ingestTime = 7;
+  TimeRange timerange = 8;
+  repeated UUID runs = 9;
+  repeated UUID projects = 10;
+  map<string, string> annotations = 11;
+  repeated UUID jobs = 12;
+}
+
+message ModelMetadata {
+  UUID id = 1;
+  string name = 2;
+  string description  = 3;
+  string kind = 4;
+  string version = 5;
+  repeated string tags = 15;
+  map<string, google.protobuf.Value> hyperparameters = 6;
+  Framework framework = 7;
+  string storage_location = 8;
+  google.protobuf.Timestamp create_ts = 14;
+  repeated UUID metrics_ids = 9;
+  UUID run = 10;
+  UUID project = 11;
+  map<string, string> annotations = 12;
+  repeated UUID jobs = 13;
+}
+
+message ExecutableMetadata {
+  UUID id = 1;
+  string name = 2;
+  string description  = 3;
+  string repository = 4;
+  string version = 5;
+  repeated string tags = 6;
+  google.protobuf.Timestamp create_ts = 7;
+  repeated UUID runs = 8;
+  repeated UUID projects = 9;
+  map<string, string> annotations = 10;
+  repeated UUID jobs = 11;
+}
+
+message Metrics {
+  UUID id = 1;
+  UUID model = 2;
+  UUID data = 3;
+  UUID job = 4;
+  string kind = 5;
+  string description = 8;
+  map<string, google.protobuf.Value> values = 6;
+  map<string, string> annotations = 7;
+}
+
+message Framework {
+  string name = 1;
+  string version = 2;
+}
+
+message TimeRange {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+}

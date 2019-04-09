@@ -1,0 +1,32 @@
+specVersion: 0.0.1
+id: 592f0c1c-72ae-4236-9202-7e6aff1954f4
+project_id: 5999460a-86e4-4b3e-b48d-b4c73b9d73b0
+experiment_id: 3eb00c1e-e06a-4a50-b911-54e6fd4d5746
+name: 'test experiment run'
+submittedDate: '2019-01-01T000000'
+submitterId: 'GUID'
+hyperparameters:
+- key: C
+  value: '100'
+- key: solver
+  value: lbfgs
+- key: max_iter
+  value: '1000'
+artifacts:
+  key: model
+  path: output/census_logreg_simple.gz
+  artifact_type: MODEL
+datasets:
+  key: input_data
+  path: data/credit-default.csv
+  artifact_type: DATA
+metrics:
+  key: accuracy
+  value: '0.7787333333333334'
+  value_type: NUMBER
+tags:
+- key: origin
+  value: ENUS
+properties:
+- key: systemId
+  value: foo

@@ -1,0 +1,12 @@
+applicationInfo:
+ - applicationId
+ - applicationEndpoint
+requestInfo:
+ - requestId
+ - requestTimestamp
+ - requestLatency
+modelInfo:
+  models:
+    type: array
+    items:
+      type: string

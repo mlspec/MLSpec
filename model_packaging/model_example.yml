@@ -1,0 +1,74 @@
+specVersion: 0.0.1
+# We need semantic versioning to indicate breaking changes
+
+runtimeArtifacts:
+# Collection of files (asset) required to instantiate the model
+
+  example: http://github.com/example
+  # Per artifact, we track
+  # - location is URI which can point to a variety of stores (ADLS / Git / Blob store / ACR path / …)
+  # - (optional) relativePath (if it needs to be laid out specially when turning the model into a service)
+
+framework:
+  name: tensorflow
+  # (scikit / pytorch / sparkml / onnx / MLnet / etc.)
+  version: 1.7
+  # Provides specific optimizers / value add for known flavors of models
+  # Version of model flavor (tf 1.7 / 1.8)
+  custom:
+  # Also provides a “custom” option
+
+    accelerator: V100
+
+time_created: 2019-01-12T22:53:18+00:00
+# when model was created
+
+created_by: sam@rockwell.com
+purpose: binary_classification
+# binary_classification - Binary classification
+# multiclass_classification - Multiclass classification
+# regression_prediction - Regression – Prediction
+# regression_recognition - Recognition – Detection
+
+clustering: xxx
+dimensionality_reduction: xxx
+# Clustering and dimensionality reduction
+
+custom:
+# Open extensible field by model type
+# Composition - Describes the collection of models used for Composite Model
+  origin:
+  # Origin (collection of artifacts)
+    codeAssets: xxx
+    dataAssets: xxx
+    created_by: xxx
+    pipeline: xxx
+    logs: xxx
+  expiry: xxx
+
+  metadata:
+  # Optional section
+    schema: 
+    #Specify the features required for scoring with the model (input, type, shape)
+
+      link_to_dataset: xxx
+      # Linkage to model dataset / profile
+      
+      features: xxx
+      # Captures model features
+      
+      service_schema: xxx
+      # Service schema (generate Swagger client)
+    output_schema: xxx
+    # Output format, in contract (with same type of validation check as the inputs) (could explore compatible version ranges, etc.)
+    metrics:
+      key: value
+      latency: 0.01
+      # key/value pairs with user defined metrics (from training)
+      # Model performance metrics (latency to inference)
+    sampleInputs: http://uri/inputs.txt
+    tags:
+    # Arbitrary key / value pairs
+    
+    key: value 
+    # Used to express anything not specified in the loose typing above

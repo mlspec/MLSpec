@@ -1,0 +1,22 @@
+applicationInfo:
+ - applicationId
+ - applicationEndpoint
+requestInfo:
+ - requestId
+ - requestTimestamp
+ - requestLatencyMs
+resultInfo:
+ - resultCode
+ - resultSizeInBytes
+inputs:
+  featureNames:
+    type: array
+    items:
+      type: string
+  featureValues:
+    type: array
+    items:
+      type: string
+prediction:
+  - predictionMimeType
+  - predictionData

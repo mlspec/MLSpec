@@ -1,0 +1,54 @@
+framework:
+  	- name: tensorflow
+  	- version: 1.12.0
+  	- runtime: python2.7
+    	- requirement(optional):
+                - numpy: 1.14.0
+                - grpc: 0.3.post19
+
+model:
+        - name: image-recognition
+  	- version: 1.0
+  	- source : http://...  or test.py
+  	- creator: Xiyuan_Wang
+  	- time: 2019-02-26
+  	- type: Enum(Keras, Graph...)
+  
+dataset:
+  	- name: mnist
+  	- version: 1.0
+  	- source: http://...  or dataset.zip
+  
+# data_process differs in various ways, this is particularly for the mnist example
+# suggest to implement with a base + plugin structure. Base contains the most basic keyword definition like 
+# the dataset_split while plugin contains functions in different scenarios like image recognition, voice
+# recognition and so on
+data_process:
+  	- data_load: 
+  	- data_split: 
+  	- padding:
+  	- truncating: 
+  	- type: enum(Image, NLP, voice)
+                - key1: value1
+    		- key2: value2
+
+# the model architecture combines with 'model' if there already exists the model file, or this section may 
+# be useful with the Dynamic Computation Graphs?
+model_architecture:
+  	- input:
+  	- fully_connected_layer:
+  	- output:
+  	- dropout:
+  	- embedding:
+  	- batch_normalization:
+
+
+training_params:
+  	- learning_rate:
+  	- loss: 
+  	- batch_size: 
+  	- epoch:
+  	- optimizer:
+    	- xxx
+    	- yyy
+  	- train_op:
