@@ -6,7 +6,7 @@ Even in serving, there will be different ways to describe your Model given how y
 
 Training section is very evolved, and can handle multiple usecases. For serving, this starts with a sample for container based Model, but we hope to evolve in future.
 
- # General Model Metadata
+ ## General Model Metadata
  
 ```
  name: (Required) name of this model file
@@ -27,7 +27,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
  domain: (Optional) Domain metadata for this model.
  website:  (Optional) Links that explain this model in more details
 ```
-# Data Required for Model Training
+## Data Required for Model Training
 
 ```
  train: (optional)
@@ -72,7 +72,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
    	- (optional) list of key(param name):value(param value)
 ```
 
-# Data required for Model Serving
+## Data required for Model Serving
 
 ```
  serve: (Optional)
@@ -91,7 +91,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
      container_store: (Optional) container_store name
 ```
 
-# Data Metedata 
+## Data Metedata 
 
 ```
  data (Optional)
@@ -101,7 +101,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
    license: (Optional) Data license
 ```
  
- # Data Location 
+## Data Location 
  
  ```
  data_stores: (Optional) - (Required for trainable)
@@ -112,7 +112,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
        secret_access_key: (Required) Object secret_access_key
 ```
 
-# Process - Mixin steps like training post process, serving pre process to be added
+## Process - Mixin steps like training post process, serving pre process to be added
 
 ```
  process: (Optional)
@@ -122,7 +122,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
         trained_model_path: (Optional) trained model path within the object storage bucket
 ```
 
-# Location for Docker container registry
+## Location for Docker container registry
 
 ```
 container_stores: (Optional)
@@ -132,7 +132,7 @@ container_stores: (Optional)
       container_registry_token: (Required if container registry is private) container registry token
 ```
 
-# Data required for Model conversion to ONNX format
+## Data required for Model conversion to ONNX format
 
 ```
  convert: (Optional)
