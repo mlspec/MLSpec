@@ -1,3 +1,11 @@
+# Model Packaging Yaml file
+
+The yaml file listed here allows to 'register' a model to a AI and ML platform. The goal is to define overall Model metadata in a standard way so that you can bring a model at any part of the lifecycle within the workflow system, if you so desire. For example someone might just want to train a model, or someone might have trained a model somewhere else, and would just like to serve. If they enter during training part, then some parts of the serving template should be filled automatically. Someone else might have a need to just convert their model to ONNX format and deploy. 
+
+Even in serving, there will be different ways to describe your Model given how you have packaged them (container, or split pre-processing, prediction, post processing, and that too differs based on different model types). 
+
+Training section is very evolved, and can handle multiple usecases. For serving, this starts with a sample for container based Model, but we hope to evolve in future.
+
  # General Model Metadata
  
 ```
