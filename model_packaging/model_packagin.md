@@ -112,7 +112,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
        secret_access_key: (Required) Object secret_access_key
 ```
 
-## Process - Mixin steps like training post process, serving pre process to be added
+## Process - Mixin steps like training post process, serving pre process can be added
 
 ```
  process: (Optional)
