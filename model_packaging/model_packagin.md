@@ -1,7 +1,8 @@
  # General Model Metadata
-
+ 
+```
  name: (Required) name of this model file
- description: (Optional) description of this model file
+ description: (Optional) description of this model file 
  author: (Required for trainable)
    name: (Required for trainable) name of this training job's author
    email: (Required for trainable) email of this training job's author
@@ -17,9 +18,10 @@
  license: (Optional) License for this model.
  domain: (Optional) Domain metadata for this model.
  website:  (Optional) Links that explain this model in more details
-
+```
 # Data Required for Model Training
 
+```
  train: (optional)
    trainable: (optional) Indicate the model is trainable. Default: False
    tested_platforms(optional list): platform on which this model can trained (current options: wml, ffdl, kubeflow)
@@ -60,9 +62,11 @@
        nodes: (Required) Number of nodes needed for this training job. Default: 1
    training_params: (Optional) list of hyperparameters for the training model
    	- (optional) list of key(param name):value(param value)
+```
 
 # Data required for Model Serving
 
+```
  serve: (Optional)
    servable: (Optional) Indicate the model is servable without training. Default: False
    tested_platforms (optional list): platform on which this model can served (current options: kubernetes, knative, seldon, wml, kfserving)
@@ -77,41 +81,52 @@
    serving_container_image: (Required for container type)
      container_image_url: (Required for container type) Container image to serve the model.
      container_store: (Optional) container_store name
+```
 
 # Data Metedata 
 
+```
  data (Optional)
    source_id: (Optional) Extension file id regarding the data source.
    domain: (Optional) Metadata about the data domain.
    website: (Optional) Links to the data description
    license: (Optional) Data license
-
+```
+ 
  # Data Location 
+ 
+ ```
  data_stores: (Optional) - (Required for trainable)
    - name: (Required) name of the data_stores
      connection:
        endpoing: (Required) Object Storage endpoint URL or public Object Storage key link.
        access_key_id: (Required) Object Storage access_key_id
        secret_access_key: (Required) Object secret_access_key
+```
 
 # Process - Mixin steps like training post process, serving pre process to be added
 
+```
  process: (Optional)
      - name: (Required) Script Process name. Can mix any kind of process here
        params: (Optional) Free flowing list of key:value paisrs
         staging_dir: (Optional) Staging directory within the local machine
         trained_model_path: (Optional) trained model path within the object storage bucket
+```
 
 # Location for Docker container registry
 
- container_stores: (Optional)
+```
+container_stores: (Optional)
   - name: (Required) name of the container_store
     connection:
       container_registry: (Required) container registry for this container_store
       container_registry_token: (Required if container registry is private) container registry token
+```
 
-# Convert Models to ONNX format
+# Data required for Model conversion to ONNX format
 
+```
  convert: (Optional)
    onnx_convertable: (Optional) Enable convertion to ONNX format.
                             The model needs to be either trainable or servable. Default: False
@@ -129,3 +144,4 @@
    tf_outputs: (Required for TensorFlow model) Output placeholders of the model.
    tf_rtol: (Optional) Relative tolerance for TensorFlow
    tf_atol: (Optional) Absolute tolerance for TensorFlow
+```
