@@ -27,7 +27,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
  domain: (Optional) Domain metadata for this model.
  website:  (Optional) Links that explain this model in more details
 ```
-## Data Required for Model Training
+## Information Required for Model Training
 
 ```
  train: (optional)
@@ -72,7 +72,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
    	- (optional) list of key(param name):value(param value)
 ```
 
-## Data required for Model Serving
+## Information required for Model Serving
 
 ```
  serve: (Optional)
