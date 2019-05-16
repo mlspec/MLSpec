@@ -131,11 +131,13 @@ Training section is very evolved, and can handle multiple usecases. For serving,
 
 ## File paths for Data Location
 
+ ```
  data_stores_file_paths: (Optional) - 
  - name: (Required) name of the data_store_file_path
       key: value
- 
- ## Process - Mixin steps like training post process, serving pre process can be added
+  ```
+  
+## Process - Mixin steps like training post process, serving pre process can be added
 
 ```
  process: (Optional)
