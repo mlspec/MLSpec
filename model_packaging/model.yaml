@@ -1,0 +1,43 @@
+# name: (Required) name of this model file
+# description: (Optional) description of this model file
+# author: (Required for trainable)
+#   name: (Required for trainable) name of this training job's author
+#   email: (Required for trainable) email of this training job's author
+# framework: (Required)
+#   name: (Required) ML/DL framework format that the model is stored as.
+#   version: (Optional) Framework version used for this model
+#   runtimes: (Required for trainable)
+#     name: (Required for trainable) programming language for the model runtime
+#     version: (Required for trainable) programming language version for the model runtime
+# license: (Optional) License for this model.
+# domain: (Optional) Domain metadata for this model.
+# purpose: (Optional) Purpose of this model, e.g. binary_classification
+#     binary_classification - Binary classification
+#     multiclass_classification - Multiclass classification
+#     regression_prediction - Regression – Prediction
+#     regression_recognition - Recognition – Detection
+# website:  (Optional) Links that explain this model in more details
+# labels: (Optional list) labels and tags for this model
+#   - url: (Optional) Link to the ML/DL model page.
+#   - pipeline_uuids: (Optional) Linkage with a list of execuable pipelines.
+
+name: Facial Age estimator Model
+model_identifier: facial-age-estimator
+description: Sample Model trained to classify the age of the human face.
+author:
+  name: DL Developer
+  email: "me@ibm.com"
+framework:
+  name: "tensorflow"
+  version: "1.13.1"
+  runtimes:
+    name: python
+    version: "3.5"
+
+license: "Apache 2.0"
+domain: "Facial Recognition"
+purpose: 
+website: "https://developer.ibm.com/exchanges/models/all/max-facial-age-estimator"
+labels:
+  - url:
+  - pipeline_uuids: ["abcd1234"]
