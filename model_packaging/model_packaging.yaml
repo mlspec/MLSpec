@@ -70,7 +70,7 @@ labels:
 #       url: (Optional) Link to the model
 #     training_data_local: (Optional)
 #       path: (Optional) Initial data files in the user local machine
-#   mount_type: (Required) object storage mount type
+#   mount_type: (Optional) object storage mount type
 #   evaluation_metrics: (optional) Define the metrics for the training job.
 #     type: (Required) evaluation_metrics type
 #     in: (Required) Path to store the evaluation_metrics
