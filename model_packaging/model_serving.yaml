@@ -66,7 +66,7 @@ data_stores:
 #      key: value
 
 data_store_file_paths:
- -  name: scoring_file_paths
+ -  name: serving_file_paths
        feature_file: 2.0/assets/features.csv
        input_schema_file: 2.0/assets/input_schema.json
        output_schema_file: 2.0/assets/output_schema.json
