@@ -28,10 +28,16 @@ framework:
 #   - pipeline_uuids: (Optional) Linkage with a list of execuable pipelines.
 # license: (Optional) License for this model.
 # domain: (Optional) Domain metadata for this model.
+# purpose: (Optional) Purpose of this model, e.g. binary_classification
+#     binary_classification - Binary classification
+#     multiclass_classification - Multiclass classification
+#     regression_prediction - Regression – Prediction
+#     regression_recognition - Recognition – Detection
 # website:  (Optional) Links that explain this model in more details
 
 license: "Apache 2.0"
 domain: "Facial Recognition"
+purpose: 
 website: "https://developer.ibm.com/exchanges/models/all/max-facial-age-estimator"
 labels:
   - url:
@@ -64,7 +70,7 @@ labels:
 #       url: (Optional) Link to the model
 #     training_data_local: (Optional)
 #       path: (Optional) Initial data files in the user local machine
-#   mount_type: (Required) object storage mount type
+#   mount_type: (Optional) object storage mount type
 #   evaluation_metrics: (optional) Define the metrics for the training job.
 #     type: (Required) evaluation_metrics type
 #     in: (Required) Path to store the evaluation_metrics
@@ -131,7 +137,7 @@ train:
     - train_op:
 
 # serve: (Optional)
-#   servable: (Optional) Indicate the model is servable without training. Default: False
+#   servable: (Optional) Indicate the model is servable. Default: False
 #   tested_platforms (optional list): platform on which this model can served (current options: kubernetes, knative, seldon, wml, kfserving)
 #   model_source: (Optional) - (Required if servable is true)
 #     servable_model: (Required for s3 or url type)
@@ -158,9 +164,39 @@ serve:
       url: ""
     servable_model_local:
       path: /local/1.0/assets/
+      url: ""
+    scorable_model_local:
+      path: /local/1.0/assets/
   serving_container_image:
     container_image_url: "codait/max-facial-age-estimator:latest"
     container_store: container_store
+
+# score: (Optional)
+#   scorable: (Optional) Indicate the model is scorable. Default: False
+#   model_feature_schema_source: (Required if scorable is true)
+#     scorable_model: (Required for s3 or url type)
+#       data_store: (Required for s3 type) datastore for the model source
+#       bucket: (Required for s3 type) Bucket that has the model source
+#       data_store_file_paths: (Required for s3 type) Source path to the model schema, features and test files
+#       url: (Required for url type) Source URL for the model
+#     secorable_model_local: (Required if local)
+#       path: (Optional) Servable model path in the user local machine
+#     metrics: Metrics for scoring
+
+score:
+  scorable: true
+  model_features_schema_source:
+    scorable_model:
+      data_store: festure_schema_datastore
+      bucket: feature_schema_bucket
+      data_store_file_paths: scoring_file_paths
+    scorable_model_local:
+      data_store_file_paths: scoring_file_paths
+    metrics:
+      key: value
+      latency: 0.01
+    params:
+       key: value
 
 # data (Optional)
 #   source_id: (Optional) Extension file id regarding the data source.
@@ -201,6 +237,17 @@ data_stores:
       endpoint: https://s3-api.us-geo.objectstorage.softlayer.net
       access_key_id: xxxxxxxxxx
       secret_access_key: xxxxxxxxxxxxx
+
+# data_stores_file_paths: (Optional) - 
+# - name: (Required) name of the data_store_file_path
+#      key: value
+
+data_store_file_paths:
+ -  name: scoring_file_paths
+       feature_file: 2.0/assets/features.csv
+       input_schema_file: 2.0/assets/input_schema.json
+       output_schema_file: 2.0/assets/output_schema.json
+       sample_inputs_file: 2.0/assets/scoring_inputs.json
 
 # container_stores: (Optional)
 #  - name: (Required) name of the container_store

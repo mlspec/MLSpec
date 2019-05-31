@@ -25,6 +25,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
    - pipeline_uuids: (Optional) Linkage with a list of execuable pipelines.
  license: (Optional) License for this model.
  domain: (Optional) Domain metadata for this model.
+ purpose: (Optional) Purpose of this model, e.g. binary_classification
  website:  (Optional) Links that explain this model in more details
 ```
 ## Information Required for Model Training
@@ -91,6 +92,22 @@ Training section is very evolved, and can handle multiple usecases. For serving,
      container_store: (Optional) container_store name
 ```
 
+## Information required for Model Scoring
+
+```
+ score: (Optional)
+   scorable: (Optional) Indicate the model is scorable. Default: False
+   model_feature_schema_source: (Required if scorable is true)
+     scorable_model: (Required for s3 or url type)
+       data_store: (Required for s3 type) datastore for the model source
+       bucket: (Required for s3 type) Bucket that has the model source
+       data_store_file_paths: (Required for s3 type) Source path to the model schema, features and test files
+       url: (Required for url type) Source URL for the model
+     secorable_model_local: (Required if local)
+       path: (Optional) Servable model path in the user local machine
+     metrics: Metrics for scoring
+```
+
 ## Data Metedata 
 
 ```
@@ -100,7 +117,7 @@ Training section is very evolved, and can handle multiple usecases. For serving,
    website: (Optional) Links to the data description
    license: (Optional) Data license
 ```
- 
+
 ## Data Location 
  
  ```
@@ -112,6 +129,14 @@ Training section is very evolved, and can handle multiple usecases. For serving,
        secret_access_key: (Required) Object secret_access_key
 ```
 
+## File paths for Data Location
+
+ ```
+ data_stores_file_paths: (Optional) - 
+ - name: (Required) name of the data_store_file_path
+      key: value
+  ```
+  
 ## Process - Mixin steps like training post process, serving pre process can be added
 
 ```
@@ -121,7 +146,6 @@ Training section is very evolved, and can handle multiple usecases. For serving,
         staging_dir: (Optional) Staging directory within the local machine
         trained_model_path: (Optional) trained model path within the object storage bucket
 ```
-
 ## Location for Docker container registry
 
 ```

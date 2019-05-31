@@ -1,0 +1,73 @@
+# convert: (Optional)
+#   onnx_convertable: (Optional) Enable convertion to ONNX format.
+#                            The model needs to be either trainable or servable. Default: False
+#   model_source: (Required for onnx_convertable) Model binary path that needs the format conversion.
+#     data_store: (Required) datastore for the model source
+#     initial_model:
+#       bucket: (Required) Bucket that has the model source
+#       path: (Required) Bucket path that has the model source
+#       url: (Optional) Link to the model
+#     onnx_model:
+#       bucket:(Required) Bucket to store the onnx model
+#       path: (Required) Bucket path to store the onnx model
+#       url: (Optional) Link to the converted model
+#   tf_inputs: (Required for TensorFlow model) Input placeholder and shapes of the model.
+#   tf_outputs: (Required for TensorFlow model) Output placeholders of the model.
+#   tf_rtol: (Optional) Relative tolerance for TensorFlow
+#   tf_atol: (Optional) Absolute tolerance for TensorFlow
+
+convert:
+  onnx_convertable: true
+  model_source:
+    initial_model:
+      data_store: age_datastore
+      bucket: facial-age-estimator
+      path: 2.0/assests/model.pt
+      url: ""
+    initial_model_local:
+      path: /local/1.0/assets/
+  onnx_converted_model:
+    onnx_model:
+      data_store: age_datastore
+      bucket: facial-age-estimator
+      path: 3.0/assets/model.onnx
+      url: ""
+    onnx_model_local:
+      path: /local/1.0/assets/
+  tf_inputs:
+    "X:0": [1]
+  tf_outputs:
+    - pred:0
+  tf_rtol: 0
+  tf_atol: 0
+  data_stores:
+  - name: age_datastore
+    type: s3
+    connection:
+      endpoint: https://s3-api.us-geo.objectstorage.softlayer.net
+      access_key_id: xxxxxxxxxx
+      secret_access_key: xxxxxxxxxxxxx
+
+# data_stores_file_paths: (Optional) - 
+# - name: (Required) name of the data_store_file_path
+#      key: value
+
+data_store_file_paths:
+ -  name: scoring_file_paths
+       feature_file: 2.0/assets/features.csv
+       input_schema_file: 2.0/assets//input_schema.json
+       output_schema_file: 2.0/assets//output_schema.json
+       sample_inputs_file: 2.0/assets//scoring_inputs.json
+
+# container_stores: (Optional)
+#  - name: (Required) name of the container_store
+#    connection:
+#      container_registry: (Required) container registry for this container_store
+#      container_registry_token: (Required if container registry is private) container registry token
+
+container_stores:
+ - name: container_store
+   connection:
+     container_registry: docker.io
+     container_registry_token: ""
+

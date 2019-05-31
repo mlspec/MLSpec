@@ -1,0 +1,11 @@
+# data (Optional)
+#   source_id: (Optional) Extension file id regarding the data source.
+#   domain: (Optional) Metadata about the data domain.
+#   website: (Optional) Links to the data description
+#   license: (Optional) Data license
+
+data:
+  source_id: IMDB-WIKI
+  domain: "Image"
+  website: "https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/"
+  license: "Apache 2.0"
