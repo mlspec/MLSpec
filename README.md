@@ -10,7 +10,7 @@ This project is about establishing community driven standards that automated too
 The below provide inspiration as projects which focus on ML and batch solutions:
 
 - [Facebook’s FBLearner Flow](https://code.fb.com/core-data/introducing-fblearner-flow-facebook-s-ai-backbone/)
-- [Google’s TFX Paper](http://delivery.acm.org/10.1145/3100000/3098021/p1387-baylor.pdf?ip=131.107.174.210&id=3098021&acc=OA&key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E5945DC2EABF3343C&__acm__=1542658837_02ec3369577959545fb0ac6cbf4c8264)
+- [Google’s TFX Paper](https://dl.acm.org/citation.cfm?id=3098021)
 - [Kubeflow Pipelines](https://cloud.google.com/blog/products/ai-machine-learning/getting-started-kubeflow-pipelines)
 - [Microsoft Azure ML Pipelines](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-ml-pipelines)
 - [Netflix Meson](https://medium.com/netflix-techblog/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9)
