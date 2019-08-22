@@ -3,14 +3,15 @@ id: 592f0c1c-72ae-4236-9202-7e6aff1954f4
 defaultCompute:
 definition:
 deprecatedBy:
-description:hello world
-isDeprecated:false
-isReadOnly:true
-isVisible:true
-name:foo
-preview:ref
-profile:ref
-state:active
+location: https://internal.contoso.com/datasets/90d47e48-9105-49d0-a159-5c029f97ecd0
+description: hello world
+isDeprecated: false
+isReadOnly: true
+isVisible: true
+name: foo
+preview: ref
+profile: ref
+state: active
 tags:
 - key: X
   value: '100'
@@ -18,16 +19,3 @@ version: 1.0.1
 versionedBy: 
 versionedOn:
 versionNotes:
-
-project_id: 5999460a-86e4-4b3e-b48d-b4c73b9d73b0
-experiment_id: 3eb00c1e-e06a-4a50-b911-54e6fd4d5746
-name: 'test experiment run'
-submittedDate: '2019-01-01T000000'
-submitterId: 'GUID'
-hyperparameters:
-- key: C
-  value: '100'
-- key: solver
-  value: lbfgs
-- key: max_iter
-  value: '1000'
