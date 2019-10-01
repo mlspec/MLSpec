@@ -1,4 +1,4 @@
-# DataStor
+# DataStore
 
 ### DataStore
 
