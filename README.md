@@ -3,8 +3,8 @@ A project to standardize the intercomponent schemas for a multi-stage ML Pipelin
 
 # Prior Art
 Many of these concepts are inspired by the previous work from the [MLSchema project](http://ml-schema.github.io/documentation/ML%20Schema.html) (Mirrored here due to site instability) -
-- Paper - 
-- Website - 
+- Paper - https://github.com/mlspec/MLSpec/blob/master/1807.05351.pdf
+- Website - https://github.com/mlspec/MLSpec/blob/master/ML%20Schema%20Core%20Specification.pdf
 
 # Background
 The machine learning industry has embraced the concept of cloud-native architectures, made up of multiple component parts loosely coupled together. One of the issues with this approach, however, has been that while the steps of a machine learning pipeline have been fairly well articulated in a wide variety of publications, the specifications for how to wire together these steps remains highly varied, and make it difficult to build any standard tools that might simplify or formalize machine learning operations. 
