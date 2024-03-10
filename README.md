@@ -5,6 +5,24 @@
 
 ML Spec is an open-source framework for defining and verifying machine learning (ML) workflows.  The project aims to provide a standardized way to specify and validate the various stages of an ML pipeline, from data preprocessing to model training, evaluation, and deployment.
 
+## Table of Contents
+
+- [Project Status](#project-status)
+  - [New Maintainer](#new-maintainer)
+- [Background](#background)
+  - [Foundational Work](#foundational-work)
+- [Existing Multi-Stage ML Workflows](#existing-multi-stage-ml-workflows)
+- [Proposed Standards](#proposed-standards)
+- [End-to-End Complete Lifecycle](#end-to-end-complete-lifecycle)
+- [Vision and Direction](#vision-and-direction)
+- [Enhancing Model Interpretability and Trust](#enhancing-model-interpretability-and-trust)
+- [Roadmap](#roadmap)
+- [Repository Structure](#repository-structure)
+- [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct)
+- [Acknowledgments](#acknowledgments)
+- [Help Shape The Future of ML Spec!](#help-shape-the-future-of-ml-spec)
+
 ## Project Status
 
 After a period of inactivity, ML Spec is now under new maintainership and undergoing a revitalization effort. We are committed to breathing new life into this project, aligning it with the latest advancements in the ML ecosystem and addressing the evolving needs of the community.
@@ -201,13 +219,6 @@ We welcome contributions from the community to refine and expand this roadmap.
 
 ## Repository Structure
 
-- `docs/`: Contains documentation, including the archived previous README.
-- `examples/`: Provides example ML Spec workflows and integrations.
-- `mlspec/`: The core ML Spec library and specification.
-- `tests/`: Contains unit tests and integration tests.
-
-## Table of Contents for ML Spec Repo
-
 - **common**
   - **object**: General notes applicable to multiple objects in the system. How they are identified and named, basic operations, etc.
 
@@ -216,11 +227,6 @@ We welcome contributions from the community to refine and expand this roadmap.
   - **datapath**: Data references
   - **artifact**: Data produced by runs
   - **dataset**: Named and versioned data in storage
- 
-- **docs**
-  - **assets**: Contains static assets used in documentation
-    - **logos**: Stores the project's logo and related visual assets
-  - **archive**: Holds archived documentation files
 
 - **pipelines**
   - **pipeline**: DAG for executing computation on data and training and deploying models
