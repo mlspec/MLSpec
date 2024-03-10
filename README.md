@@ -1,108 +1,260 @@
-# MLSpec
-A project to standardize the intercomponent schemas for a multi-stage ML Pipeline
+![MLSpec Logo](.//docs/assets/logos/mlspec_logo.png#gh-light-mode-only)
+![MLSpec Logo](.//docs/assets/logos/mlspec_logo_light.png#gh-dark-mode-only)
 
-# Prior Art
-Many of these concepts are inspired by the previous work from the [MLSchema project](http://ml-schema.github.io/documentation/ML%20Schema.html) (Mirrored here due to site instability) -
-- Paper - https://github.com/mlspec/MLSpec/blob/master/1807.05351.pdf
-- Website - https://github.com/mlspec/MLSpec/blob/master/ML%20Schema%20Core%20Specification.pdf
+**ML Spec is being revived with renewed interest and active development!**
 
-# Background
-The machine learning industry has embraced the concept of cloud-native architectures, made up of multiple component parts loosely coupled together. One of the issues with this approach, however, has been that while the steps of a machine learning pipeline have been fairly well articulated in a wide variety of publications, the specifications for how to wire together these steps remains highly varied, and make it difficult to build any standard tools that might simplify or formalize machine learning operations. 
+ML Spec is an open-source framework for defining and verifying machine learning (ML) workflows.  The project aims to provide a standardized way to specify and validate the various stages of an ML pipeline, from data preprocessing to model training, evaluation, and deployment.
 
-This project is about establishing community driven standards that automated tooling can consume and output. Ideally, this enables the next opportunity around standardized ML software engineering practices. 
+## Project Status
 
-# Existing Multi-Stage ML Workflows
-The below provide inspiration as projects which focus on ML and batch solutions:
+After a period of inactivity, ML Spec is now under new maintainership and undergoing a revitalization effort. We are committed to breathing new life into this project, aligning it with the latest advancements in the ML ecosystem and addressing the evolving needs of the community.
 
-- [Facebook’s FBLearner Flow](https://code.fb.com/core-data/introducing-fblearner-flow-facebook-s-ai-backbone/)
-- [Google’s TFX Paper](https://dl.acm.org/citation.cfm?id=3098021)
-- [Kubeflow Pipelines](https://cloud.google.com/blog/products/ai-machine-learning/getting-started-kubeflow-pipelines)
-- [Microsoft Azure ML Pipelines](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-ml-pipelines)
-- [Netflix Meson](https://medium.com/netflix-techblog/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9)
-- [Spotify’s Luigi](https://github.com/spotify/luigi)
-- [Uber’s Michelangelo](https://eng.uber.com/michelangelo/) [[paper](http://proceedings.mlr.press/v67/li17a/li17a.pdf)]
+### New Maintainer
 
-From these papers, we feel the following steps summarize all the steps in an end-to-end machine learning workflow.
+M42 has taken over the maintainership of ML Spec and are excited to steer its future development. For any inquiries or suggestions, please feel free to reach out to me at av@messier42.com or @invariantly.
 
-# Proposed standards
-We propose a standard around the following components.
+## Background
 
-- Workflow orchestration – what are the standard endpoints that each step in an ML workflow require (e.g. /ok, /varz, /metrics, etc)
-- Model - …
-- Logging – what is the NCSA standard log for each inference request?
-- Other…
+The field of machine learning has seen significant advancements in recent years, with the development of various frameworks, tools, and platforms to support the ML lifecycle. However, the lack of standardization and interoperability among these tools has led to challenges in reproducing, sharing, and governing ML workflows across different environments and organizations.
 
-# End-to-End Complete Lifecycle
-We feel that over time, every stage of an ML lifecycle will need some form of metadata management. The below represent a collection of these steps:
+### Foundational Work
 
-1. *Codify Objectives* - Detail the model outputs, possible errors and minimum success for launching in code; a simple DSL that can be used to verify success/failure programmatically for automated deployment
-2. *Data Ingestion* - What tools/connectors (e.g. ODBC, Spark, HDFS, CSV, etc) were used for pulling in data; what queries were used (including signed datasets); sharding strategies; May include labelling or synthetic data generation/simulation.
-3. *Data Analysis* - Set of descriptive statistics on the included features and configurable slices of the data. Identification of outliers.
-4. *Data Transformation* - What data conversions and feature wrangling (e.g. feature to-integer mappings) were used; what outliers were programmatically eliminated
-5. *Data Validation* - What validation was applied to the data based on a versioned, succinct description of the expected properties of the data; schema can also be used to prevent bad behavior, such as training on deprecated data; mechanisms to  generate the first version of the schema (e.g. select * from foo limit 30) that can be used to drive other platform components, e.g., automatic feature-engineering or data-analysis tools.
-6. *Data Splitting (including partitioning)* - How the data is split into training, validation, hold back & debugging sets and records and gets results of validation for statistics of each set; metadata here may be be used to detect leakage of training data into testing data and/or overfit
-7. *Model Training/Tuning* - Metadata about how the model is packaged and the distribution strategy; hyperparameters searched and results of the search; results of any conversions to other model serving format (e.g. TF -> ONNX); techniques used to quantize/compress/prune model and the results  
-8. *Model Evaluation/Validation*	- Result of evaluation and validation of model to ensure they meet original codified objectives before serving them to users; computation of metrics on slices of data, both for improving performance and avoiding bias (e.g. gender A gets significantly better results than gender B); source of data used for validation
-9. *Test*	- Results of final confirmation for model on the hold back data set; MUST BE SEPARATE STEP FROM #8; source of data used for final test
-10. *Model Packaging*	- Metadata about model package; includes adding additional security constraints, monitoring agents, signing, etc.; descriptions of the necessary infrastructure (e.g. P100s, 16 GB of RAM, etc)
-11. *Serving*	- Results of rolling model out to production
-12. *Monitoring* - Live queryable metadata that provides liveness checking and ML-specific signals that need action, such as significant deviation from previous model performance or degradation of the model performance over time; ideally includes rollback strategy (e.g. if this model is failing, use model last-year.last-month.pkl)
-13. *Logging*	- NCSA-style record per inference request, including a cryptographically secure record of the version of the pipeline (including features) and data used to train.
+ML Spec builds upon the ideas and concepts from the foundational work in the field of ML workflow specification and verification. Some notable contributions include:
 
-# Table of contents for MLSpec repo
+- [Predictive Model Markup Language (PMML)](https://en.wikipedia.org/wiki/Predictive_Model_Markup_Language)
+- [Portable Format for Analytics (PFA)](https://dmg.org/pfa/)
+- [ML Metadata](https://www.tensorflow.org/tfx/guide/mlmd)
 
-- [common](./common)
+These projects have paved the way for standardizing ML model serialization and metadata, but they primarily focus on individual models rather than end-to-end workflows.
 
-  - [object](./common/object.md)
+ML Spec also draws inspiration from the MLSchema project, which has made significant contributions to the field of ML workflow specification. Due to the instability of the original MLSchema website, we have mirrored some of their key resources here:
 
-    General notes applicable to multiple objects in the system. How they are identified and named, basic operations, etc.
+- [MLSchema Paper](https://github.com/mlspec/MLSpec/blob/master/1807.05351.pdf)
+- [MLSchema Core Specification](https://github.com/mlspec/MLSpec/blob/master/ML%20Schema%20Core%20Specification.pdf)
 
-- [data](./data)
+These resources provide valuable insights into the design principles and approaches behind ML workflow specification and have influenced the development of MLSpec.
 
-  - [datastore](datastore.md)
+## Existing Multi-Stage ML Workflows
 
-    Data storages
+In recent years, several prominent companies and organizations have developed their own multi-stage ML workflow solutions to address the challenges of managing end-to-end machine learning pipelines. These projects have focused on combining ML and batch processing capabilities to create robust and scalable workflows.
 
-  - [datapath](./data/datapath.md)
+Some notable examples of these multi-stage ML workflow solutions include:
 
-    Data references
+- [Facebook’s FBLearner Flow](https://code.fb.com/core-data/introducing-fblearner-flow-facebook-s-ai-backbone/): FBLearner Flow is Facebook's internal ML platform that enables engineers and data scientists to build, train, and deploy ML models at scale. It provides a unified interface for managing the entire ML lifecycle, from data preparation to model serving.
 
-  - [artifact](artifact.md)
+- [Google's TFX:](https://dl.acm.org/citation.cfm?id=3098021) TensorFlow Extended (TFX) is an end-to-end platform for deploying production ML pipelines. It provides a suite of components and libraries for building, training, and serving ML models, with a focus on scalability and reproducibility.
 
-    Data produced by runs
+- [Kubeflow Pipelines](https://cloud.google.com/blog/products/ai-machine-learning/getting-started-kubeflow-pipelines): Kubeflow Pipelines is an open-source platform for building and deploying portable, scalable ML workflows on Kubernetes. It allows users to define and orchestrate complex ML pipelines using a declarative approach.
 
-  - [dataset](./data/dataset.md)
+- [Microsoft Azure ML Pipelines](https://learn.microsoft.com/en-us/azure/machine-learning/concept-ml-pipelines?view=azureml-api-2): Azure ML Pipelines is a service within the Azure Machine Learning platform that enables the creation and management of end-to-end ML workflows. It provides a visual interface and SDK for building, scheduling, and monitoring ML pipelines.
 
-    Named and versioned data in storage
+- [Netflix Meson](https://netflixtechblog.com/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9): Meson is Netflix's internal platform for building and managing ML workflows. It provides a unified framework for data preparation, model training, and deployment, with a focus on scalability and ease of use.
 
-- [pipelines](./pipelines)
+- [Spotify's Luigi](https://github.com/spotify/luigi): Luigi is an open-source Python library developed by Spotify for building and scheduling complex pipelines of batch jobs. While not specifically designed for ML workflows, it has been widely adopted in the ML community for managing data processing and model training pipelines.
 
-  - [pipeline](pipeline.md)
+- [Uber's Michelangelo](https://www.uber.com/blog/michelangelo-machine-learning-platform/): Michelangelo is Uber's ML platform that powers a wide range of services, from fraud detection to customer support. It provides end-to-end functionality for building, training, and deploying ML models at scale.
 
-    DAG for executing computation on data and training and deploying models
+From studying these projects and their associated papers, we have identified a set of common steps that encompass the end-to-end machine learning workflow. These steps include data ingestion, data preparation, feature engineering, model training, model evaluation, model deployment, and monitoring.
 
-  - [module](module.md)
+ML Spec aims to provide a standardized specification and framework for defining and executing these multi-stage ML workflows, drawing inspiration from the successful approaches and best practices established by these industry leaders.
 
-    Reusable definition of computation, includes script, set of expected inputs, outputs, etc.
+## Proposed Standards
 
-- [experiment_tracking](./experiment_tracking)
+ML Spec aims to establish a set of standards for various components involved in an end-to-end machine learning workflow. By defining these standards, ML Spec seeks to promote interoperability, reproducibility, and best practices across different ML tools and platforms.
 
-  - [run](./experiment_tracking/run.md)
+The proposed standards cover the following key areas:
 
-    Tracked execution of pipeline or single script on compute
+1. **Workflow Orchestration**: ML Spec will define a standard set of endpoints that each step in an ML workflow should expose. These endpoints may include:
+   - `/ok`: An endpoint to check the health and readiness of the step.
+   - `/varz`: An endpoint to retrieve various runtime variables and configurations.
+   - `/metrics`: An endpoint to expose performance metrics and monitoring data.
+   - Additional endpoints for step-specific functionality and control.
 
-- [model_packaging](./model_packaging)
+   By standardizing these endpoints, ML Spec enables consistent monitoring, control, and integration of ML workflow steps across different orchestration platforms.
 
-  - [models](./model_packaging/README.md)
+2. **Model Management**: ML Spec will provide guidelines and standards for versioning, packaging, and deploying ML models. This may include:
+   - Model serialization formats and conventions.
+   - Metadata schemas for capturing model provenance, hyperparameters, and performance metrics.
+   - APIs for model serving and inference.
+   - Best practices for model versioning and lineage tracking.
 
-    Trained models
+   Standardizing model management practices promotes model reproducibility, interpretability, and maintainability.
 
-- logging_proto
+3. **Logging**: ML Spec will define a standard logging format for capturing relevant information about each inference request. This logging format will align with the NCSA (National Center for Supercomputing Applications) standard log format, which includes fields such as:
+   - Timestamp
+   - Request ID
+   - User ID
+   - Model version
+   - Input data
+   - Output predictions
+   - Latency
+   - Additional metadata
 
-- monitoring_proto
+   Adopting a standardized logging format enables consistent monitoring, debugging, and analysis of ML system behavior.
 
-- [metadata_file](./metadata_file)
+4. **Data Validation and Quality**: ML Spec will provide guidelines and standards for validating and ensuring the quality of input data at various stages of the ML workflow. This may include:
+   - Data schema validation.
+   - Data quality checks (e.g., missing values, outliers, data drift).
+   - Data versioning and lineage tracking.
+   - Integration with data validation frameworks and tools.
 
-  - [metadata](./metadata_file/metadata.yaml)
+   Ensuring data quality and validation helps maintain the integrity and reliability of ML workflows.
 
-    The metadata file used to recreate the ML workflow
+5. **Experiment Tracking**: ML Spec will define standards for tracking and managing ML experiments, including:
+   - Experiment metadata schemas.
+   - APIs for logging and querying experiment runs.
+   - Best practices for organizing and versioning experiment artifacts.
+   - Integration with popular experiment tracking frameworks.
+
+   Standardizing experiment tracking enables reproducibility, comparison, and analysis of ML experiments.
+
+By establishing standards across these critical components of the ML workflow, ML Spec aims to foster a more robust, interoperable, and governed ecosystem for machine learning development and deployment.
+
+## End-to-End Complete Lifecycle
+
+With ML Spec, we believe that every stage of an ML lifecycle requires some form of metadata management. We have identified the following steps as critical components of a complete ML lifecycle:
+
+1. **Codify Objectives**: Detail the model outputs, possible errors, and minimum success criteria for launching in code. Use a simple DSL that can be used to verify success/failure programmatically for automated deployment.
+
+2. **Data Ingestion**: Specify the tools/connectors (e.g., ODBC, Spark, HDFS, CSV, etc.) used for pulling in data, along with the queries used (including signed datasets), sharding strategies, and any labeling or synthetic data generation/simulation techniques.
+
+3. **Data Analysis**: Provide a set of descriptive statistics on the included features and configurable slices of the data. Identify outliers.
+
+4. **Data Transformation**: Document the data conversions and feature wrangling techniques (e.g., feature to-integer mappings) used, as well as any outliers that were programmatically eliminated.
+
+5. **Data Validation**: Apply validation to the data based on a versioned, succinct description of the expected properties of the data. Use schemas to prevent bad behavior, such as training on deprecated data. Provide mechanisms to generate the first version of the schema (e.g., `select * from foo limit 30`) that can be used to drive other platform components, such as automatic feature-engineering or data-analysis tools.
+
+6. **Data Splitting (including partitioning)**: Record how the data is split into training, validation, hold back, and debugging sets, along with the results of validation for statistics of each set. Use metadata to detect leakage of training data into testing data and/or overfitting.
+
+7. **Model Training/Tuning**: Capture metadata about how the model is packaged and the distribution strategy, hyperparameters searched and results of the search, results of any conversions to other model serving formats (e.g., TF -> ONNX), and techniques used to quantize/compress/prune the model and the results.
+
+8. **Model Evaluation/Validation**: Record the results of evaluation and validation of models to ensure they meet the original codified objectives before serving them to users. Compute metrics on slices of data, both for improving performance and avoiding bias (e.g., gender A gets significantly better results than gender B). Document the source of data used for validation.
+
+9. **Test**: Record the results of final confirmation for the model on the hold back data set. This MUST BE A SEPARATE STEP FROM #8. Document the source of data used for the final test.
+
+10. **Model Packaging**: Capture metadata about the model package, including additional security constraints, monitoring agents, signing, etc. Provide descriptions of the necessary infrastructure (e.g., P100s, 16 GB of RAM, etc.).
+
+11. **Serving**: Record the results of rolling the model out to production.
+
+12. **Monitoring**: Provide live queryable metadata that enables liveness checking and ML-specific signals that need action, such as significant deviation from previous model performance or degradation of the model performance over time. Include a rollback strategy (e.g., if this model is failing, use `model last-year.last-month.pkl`).
+
+13. **Logging**: Generate an NCSA-style record per inference request, including a cryptographically secure record of the version of the pipeline (including features) and data used to train.
+
+By capturing and managing metadata at each stage of the ML lifecycle, ML Spec aims to provide a comprehensive and standardized approach to ensuring the reproducibility, interpretability, and governance of end-to-end machine learning workflows.
+
+## Vision and Direction
+
+Our vision for ML Spec is to establish it as a robust and widely adopted framework for defining, standardizing, and verifying complex ML workflows. We aim to:
+
+1. **Enhance Framework Support**: Extend ML Spec to support the latest ML frameworks and libraries, such as PyTorch, XGBoost, and LightGBM, enabling seamless integration with cutting-edge techniques and architectures.
+
+2. **Accommodate Complex Workflows**: Expand the ML Spec schema to accommodate intricate, multi-stage ML pipelines, including data preprocessing, feature engineering, model training, evaluation, and deployment.
+
+3. **Integrate with MLOps and AutoML**: Align ML Spec with modern MLOps practices and AutoML frameworks, enabling streamlined workflow management and automation.
+
+4. **Improve Governance and Compliance**: Introduce a methodology for recording attestations of workflow execution in accordance with schema to support governance and compliance requirements.
+
+5. **Foster Community Engagement**: Revitalize the project's community by improving documentation, providing clear contributing guidelines, and actively engaging with users and contributors.
+
+6. **Integrate with Workflow Orchestration Tools**: Provide seamless integration with popular workflow management platforms, such as Apache Airflow, Flyte, and Prefect, allowing users to leverage ML Spec for defining and verifying ML workflows within their existing orchestration pipelines.
+
+## Enhancing Model Interpretability and Trust
+
+One of the key challenges in the adoption and deployment of machine learning models is their interpretability and the trust users place in them. Many ML models are often considered "black boxes," making it difficult for users to understand how they arrive at their predictions or decisions. This lack of transparency can lead to a lack of trust and hesitation in relying on these models, especially in critical domains such as healthcare, finance, and legal systems.
+
+MLSpec aims to address this challenge by providing a framework for building interpretable and transparent ML workflows. By standardizing the end-to-end ML lifecycle and promoting best practices for model development, evaluation, and deployment, MLSpec enables users to gain insights into the behavior and decision-making process of ML models.
+
+Some of the ways MLSpec promotes model interpretability and trust include:
+
+1. **Standardized Model Metadata**: MLSpec defines a standard schema for capturing and storing metadata about ML models, including information about their architecture, training data, hyperparameters, and performance metrics. This metadata provides a clear and comprehensive view of the model's characteristics and behavior.
+
+2. **Model Evaluation and Validation**: MLSpec emphasizes rigorous model evaluation and validation practices to ensure that models meet the desired performance criteria and are free from biases or unintended consequences. By standardizing evaluation metrics and techniques, MLSpec enables users to assess the reliability and trustworthiness of models objectively.
+
+3. **Model Explainability Techniques**: MLSpec encourages the use of model explainability techniques, such as feature importance analysis, partial dependence plots, and counterfactual explanations, to provide insights into how models make predictions. These techniques help users understand the factors influencing model decisions and identify potential issues or biases.
+
+4. **Governance and Auditing**: MLSpec includes mechanisms for model governance and auditing, allowing organizations to track and monitor the lifecycle of ML models. This includes capturing information about model lineage, versioning, and approvals, ensuring that models adhere to regulatory requirements and ethical standards.
+
+By focusing on model interpretability and trust, MLSpec aims to foster the responsible development and deployment of ML models. It provides the necessary tools and guidelines to build transparent and accountable ML workflows, enabling users to have confidence in the models they use and the decisions they make.
+
+Join us in our mission to create a more interpretable and trustworthy ML ecosystem with MLSpec!
+
+## Roadmap
+
+Our short-term goals (next 3-6 months) include:
+
+- [ ] Refactor the library codebase to improve maintainability and extensibility.
+- [ ] Add support for PyTorch and XGBoost frameworks.
+- [ ] Enhance the schema to accommodate complex, multi-stage workflows.
+- [ ] Implement workflow attestation and digital signing capabilities.
+- [ ] Overhaul the documentation and contributing guidelines.
+- [ ] Develop an Apache Airflow operator/plugin for integrating ML Spec-defined workflows.
+
+Our medium-term goals (6-12 months) include:
+
+- [ ] Integrate with popular MLOps platforms and AutoML frameworks.
+- [ ] Develop tools and dashboards for governance and compliance reporting.
+- [ ] Collaborate with the Apache Airflow, Kubeflow, Prefect, Argo Workflows, MLflow, and Flyte communities to develop seamless integrations for defining and verifying ML workflows within their respective orchestration platforms.
+- [ ] Establish industry partnerships and collaborations to promote adoption.
+- [ ] Foster an active community of contributors and users.
+
+We welcome contributions from the community to refine and expand this roadmap.
+
+## Repository Structure
+
+- `docs/`: Contains documentation, including the archived previous README.
+- `examples/`: Provides example ML Spec workflows and integrations.
+- `mlspec/`: The core ML Spec library and specification.
+- `tests/`: Contains unit tests and integration tests.
+
+## Table of Contents for ML Spec Repo
+
+- **common**
+  - **object**: General notes applicable to multiple objects in the system. How they are identified and named, basic operations, etc.
+
+- **data**
+  - **datastore**: Data storages
+  - **datapath**: Data references
+  - **artifact**: Data produced by runs
+  - **dataset**: Named and versioned data in storage
+ 
+- **docs**
+  - **assets**: Contains static assets used in documentation
+    - **logos**: Stores the project's logo and related visual assets
+  - **archive**: Holds archived documentation files
+
+- **pipelines**
+  - **pipeline**: DAG for executing computation on data and training and deploying models
+  - **module**: Reusable definition of computation, includes script, set of expected inputs, outputs, etc.
+
+- **experiment_tracking**
+  - **run**: Tracked execution of pipeline or single script on compute
+
+- **model_packaging**
+  - **models**: Trained models
+
+- **logging_proto**
+
+- **monitoring_proto**
+
+- **metadata_file**
+  - **metadata**: The metadata file used to recreate the ML workflow
+
+## Contributing
+
+We are excited to have you on board! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for detailed guidelines on how to get involved, whether it's by reporting issues, submitting pull requests, or participating in discussions.
+
+## Code of Conduct
+
+To ensure a welcoming and inclusive environment, we have adopted the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). Please review and adhere to these guidelines.
+
+## Acknowledgments
+
+We would like to express our gratitude to David Aronchick (@aronchick) and the authors and contributors of ML Spec for their pioneering work on this project. Their efforts have laid the foundation for what we aim to achieve.
+
+## Help Shape The Future of ML Spec!
+
+We invite you to be a part of the ML Spec journey. Try out the new developments, provide feedback, and contribute your ideas and code. Together, we can shape the future of standardized and verifiable ML workflows.
+
+For discussions and updates, stay tuned for upcoming mailing list and social accounts.
+
+We believe ML Spec has the potential to become a foundational tool for building reliable and governed ML pipelines, and we look forward to working with the community to realize this vision.
