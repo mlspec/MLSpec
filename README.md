@@ -1,9 +1,9 @@
-![MLSpec Logo](.//docs/assets/logos/mlspec_logo.png#gh-light-mode-only)
-![MLSpec Logo](.//docs/assets/logos/mlspec_logo_light.png#gh-dark-mode-only)
+![MLSpec Logo](./docs/assets/logos/mlspec_logo.png#gh-light-mode-only)
+![MLSpec Logo](./docs/assets/logos/mlspec_logo_light.png#gh-dark-mode-only)
 
-**ML Spec is being revived with renewed interest and active development!**
+**MLSpec is being revived with renewed interest and active development!**
 
-ML Spec is an open-source framework for defining and verifying machine learning (ML) workflows.  The project aims to provide a standardized way to specify and validate the various stages of an ML pipeline, from data preprocessing to model training, evaluation, and deployment.
+MLSpec is an open-source framework for defining and verifying machine learning (ML) workflows.  The project aims to provide a standardized way to specify and validate the various stages of an ML pipeline, from data preprocessing to model training, evaluation, and deployment.
 
 ## Table of Contents
 
@@ -22,15 +22,15 @@ ML Spec is an open-source framework for defining and verifying machine learning 
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
 - [Acknowledgments](#acknowledgments)
-- [Help Shape The Future of ML Spec!](#help-shape-the-future-of-ml-spec)
+[Help Shape The Future of MLSpec!](#help-shape-the-future-of-mlspec)
 
 ## Project Status
 
-After a period of inactivity, ML Spec is now under new maintainership and undergoing a revitalization effort. We are committed to breathing new life into this project, aligning it with the latest advancements in the ML ecosystem and addressing the evolving needs of the community.
+After a period of inactivity, MLSpec is now under new maintainership and undergoing a revitalization effort. We are committed to breathing new life into this project, aligning it with the latest advancements in the ML ecosystem and addressing the evolving needs of the community.
 
 ### New Maintainer
 
-M42 has taken over the maintainership of ML Spec and are excited to steer its future development. For any inquiries or suggestions, please feel free to reach out to me at av@messier42.com or @invariantly.
+M42 has taken over the maintainership of MLSpec and are excited to steer its future development. For any inquiries or suggestions, please feel free to reach out to me at av@messier42.com or @invariantly.
 
 ## Background
 
@@ -38,7 +38,7 @@ The field of machine learning has seen significant advancements in recent years,
 
 ### Foundational Work
 
-ML Spec builds upon the ideas and concepts from the foundational work in the field of ML workflow specification and verification. Some notable contributions include:
+MLSpec builds upon the ideas and concepts from the foundational work in the field of ML workflow specification and verification. Some notable contributions include:
 
 - [Predictive Model Markup Language (PMML)](https://en.wikipedia.org/wiki/Predictive_Model_Markup_Language)
 - [Portable Format for Analytics (PFA)](https://dmg.org/pfa/)
@@ -46,7 +46,7 @@ ML Spec builds upon the ideas and concepts from the foundational work in the fie
 
 These projects have paved the way for standardizing ML model serialization and metadata, but they primarily focus on individual models rather than end-to-end workflows.
 
-ML Spec also draws inspiration from the MLSchema project, which has made significant contributions to the field of ML workflow specification. Due to the instability of the original MLSchema website, we have mirrored some of their key resources here:
+MLSpec also draws inspiration from the MLSchema project, which has made significant contributions to the field of ML workflow specification. Due to the instability of the original MLSchema website, we have mirrored some of their key resources here:
 
 - [MLSchema Paper](https://github.com/mlspec/MLSpec/blob/master/1807.05351.pdf)
 - [MLSchema Core Specification](https://github.com/mlspec/MLSpec/blob/master/ML%20Schema%20Core%20Specification.pdf)
@@ -55,7 +55,7 @@ These resources provide valuable insights into the design principles and approac
 
 ### Existing Multi-Stage ML Workflows
 
-In recent years, several prominent companies and organizations have developed their own multi-stage ML workflow solutions to address the challenges of managing end-to-end machine learning pipelines. These projects have focused on combining ML and batch processing capabilities to create robust and scalable workflows.
+Several prominent companies and organizations have developed their own multi-stage ML workflow solutions to address the challenges of managing end-to-end machine learning pipelines. These projects have focused on combining ML and batch processing capabilities to create robust and scalable workflows.
 
 Some notable examples of these multi-stage ML workflow solutions include:
 
@@ -75,25 +75,25 @@ Some notable examples of these multi-stage ML workflow solutions include:
 
 From studying these projects and their associated papers, we have identified a set of common steps that encompass the end-to-end machine learning workflow. These steps include data ingestion, data preparation, feature engineering, model training, model evaluation, model deployment, and monitoring.
 
-ML Spec aims to provide a standardized specification and framework for defining and executing these multi-stage ML workflows, drawing inspiration from the successful approaches and best practices established by these industry leaders.
+MLSpec aims to provide a standardized specification and framework for defining and executing these multi-stage ML workflows, drawing inspiration from the successful approaches and best practices established by these industry leaders.
 
 # Spec 
 
 ## Proposed Standards
 
-ML Spec aims to establish a set of standards for various components involved in an end-to-end machine learning workflow. By defining these standards, ML Spec seeks to promote interoperability, reproducibility, and best practices across different ML tools and platforms.
+MLSpec aims to establish a set of standards for various components involved in an end-to-end machine learning workflow. By defining these standards, MLSpec seeks to promote interoperability, reproducibility, and best practices across different ML tools and platforms.
 
 The proposed standards cover the following key areas:
 
-1. **Workflow Orchestration**: ML Spec will define a standard set of endpoints that each step in an ML workflow should expose. These endpoints may include:
+1. **Workflow Orchestration**: MLSpec will define a standard set of endpoints that each step in an ML workflow should expose. These endpoints may include:
    - `/ok`: An endpoint to check the health and readiness of the step.
    - `/varz`: An endpoint to retrieve various runtime variables and configurations.
    - `/metrics`: An endpoint to expose performance metrics and monitoring data.
    - Additional endpoints for step-specific functionality and control.
 
-   By standardizing these endpoints, ML Spec enables consistent monitoring, control, and integration of ML workflow steps across different orchestration platforms.
+   By standardizing these endpoints, MLSpec enables consistent monitoring, control, and integration of ML workflow steps across different orchestration platforms.
 
-2. **Model Management**: ML Spec will provide guidelines and standards for versioning, packaging, and deploying ML models. This may include:
+2. **Model Management**: MLSpec will provide guidelines and standards for versioning, packaging, and deploying ML models. This may include:
    - Model serialization formats and conventions.
    - Metadata schemas for capturing model provenance, hyperparameters, and performance metrics.
    - APIs for model serving and inference.
@@ -101,7 +101,7 @@ The proposed standards cover the following key areas:
 
    Standardizing model management practices promotes model reproducibility, interpretability, and maintainability.
 
-3. **Logging**: ML Spec will define a standard logging format for capturing relevant information about each inference request. This logging format will align with the NCSA (National Center for Supercomputing Applications) standard log format, which includes fields such as:
+3. **Logging**: MLSpec will define a standard logging format for capturing relevant information about each inference request. This logging format will align with the NCSA (National Center for Supercomputing Applications) standard log format, which includes fields such as:
    - Timestamp
    - Request ID
    - User ID
@@ -113,7 +113,7 @@ The proposed standards cover the following key areas:
 
    Adopting a standardized logging format enables consistent monitoring, debugging, and analysis of ML system behavior.
 
-4. **Data Validation and Quality**: ML Spec will provide guidelines and standards for validating and ensuring the quality of input data at various stages of the ML workflow. This may include:
+4. **Data Validation and Quality**: MLSpec will provide guidelines and standards for validating and ensuring the quality of input data at various stages of the ML workflow. This may include:
    - Data schema validation.
    - Data quality checks (e.g., missing values, outliers, data drift).
    - Data versioning and lineage tracking.
@@ -121,7 +121,7 @@ The proposed standards cover the following key areas:
 
    Ensuring data quality and validation helps maintain the integrity and reliability of ML workflows.
 
-5. **Experiment Tracking**: ML Spec will define standards for tracking and managing ML experiments, including:
+5. **Experiment Tracking**: MLSpec will define standards for tracking and managing ML experiments, including:
    - Experiment metadata schemas.
    - APIs for logging and querying experiment runs.
    - Best practices for organizing and versioning experiment artifacts.
@@ -129,11 +129,11 @@ The proposed standards cover the following key areas:
 
    Standardizing experiment tracking enables reproducibility, comparison, and analysis of ML experiments.
 
-By establishing standards across these critical components of the ML workflow, ML Spec aims to foster a more robust, interoperable, and governed ecosystem for machine learning development and deployment.
+By establishing standards across these critical components of the ML workflow, MLSpec aims to foster a more robust, interoperable, and governed ecosystem for machine learning development and deployment.
 
 ## End-to-End Complete Lifecycle
 
-With ML Spec, we believe that every stage of an ML lifecycle requires some form of metadata management. We have identified the following steps as critical components of a complete ML lifecycle:
+With MLSpec, we believe that every stage of an ML lifecycle requires some form of metadata management. We have identified the following steps as critical components of a complete ML lifecycle:
 
 1. **Codify Objectives**: Detail the model outputs, possible errors, and minimum success criteria for launching in code. Use a simple DSL that can be used to verify success/failure programmatically for automated deployment.
 
@@ -161,7 +161,7 @@ With ML Spec, we believe that every stage of an ML lifecycle requires some form 
 
 13. **Logging**: Generate an NCSA-style record per inference request, including a cryptographically secure record of the version of the pipeline (including features) and data used to train.
 
-By capturing and managing metadata at each stage of the ML lifecycle, ML Spec aims to provide a comprehensive and standardized approach to ensuring the reproducibility, interpretability, and governance of end-to-end machine learning workflows.
+By capturing and managing metadata at each stage of the ML lifecycle, MLSpec aims to provide a comprehensive and standardized approach to ensuring the reproducibility, interpretability, and governance of end-to-end machine learning workflows.
 
 ## Repository Structure
 
@@ -223,19 +223,19 @@ By capturing and managing metadata at each stage of the ML lifecycle, ML Spec ai
 
 ## Vision and Direction
 
-Our vision for ML Spec is to establish it as a robust and widely adopted framework for defining, standardizing, and verifying complex ML workflows. We aim to:
+Our vision for MLSpec is to establish it as a robust and widely adopted framework for defining, standardizing, and verifying complex ML workflows. We aim to:
 
-1. **Enhance Framework Support**: Extend ML Spec to support the latest ML frameworks and libraries, such as PyTorch, XGBoost, and LightGBM, enabling seamless integration with cutting-edge techniques and architectures.
+1. **Enhance Framework Support**: Extend MLSpec to support the latest ML frameworks and libraries, such as PyTorch, XGBoost, and LightGBM, enabling seamless integration with cutting-edge techniques and architectures.
 
-2. **Accommodate Complex Workflows**: Expand the ML Spec schema to accommodate intricate, multi-stage ML pipelines, including data preprocessing, feature engineering, model training, evaluation, and deployment.
+2. **Accommodate Complex Workflows**: Expand the MLSpec schema to accommodate intricate, multi-stage ML pipelines, including data preprocessing, feature engineering, model training, evaluation, and deployment.
 
-3. **Integrate with MLOps and AutoML**: Align ML Spec with modern MLOps practices and AutoML frameworks, enabling streamlined workflow management and automation.
+3. **Integrate with MLOps and AutoML**: Align MLSpec with modern MLOps practices and AutoML frameworks, enabling streamlined workflow management and automation.
 
 4. **Improve Governance and Compliance**: Introduce a methodology for recording attestations of workflow execution in accordance with schema to support governance and compliance requirements.
 
 5. **Foster Community Engagement**: Revitalize the project's community by improving documentation, providing clear contributing guidelines, and actively engaging with users and contributors.
 
-6. **Integrate with Workflow Orchestration Tools**: Provide seamless integration with popular workflow management platforms, such as Apache Airflow, Flyte, and Prefect, allowing users to leverage ML Spec for defining and verifying ML workflows within their existing orchestration pipelines.
+6. **Integrate with Workflow Orchestration Tools**: Provide seamless integration with popular workflow management platforms, such as Apache Airflow, Flyte, and Prefect, allowing users to leverage MLSpec for defining and verifying ML workflows within their existing orchestration pipelines.
 
 ## Enhancing Model Interpretability and Trust
 
@@ -266,7 +266,7 @@ Our short-term goals (next 3-6 months) include:
 - [ ] Enhance the schema to accommodate complex, multi-stage workflows.
 - [ ] Implement workflow attestation and digital signing capabilities.
 - [ ] Overhaul the documentation and contributing guidelines.
-- [ ] Develop an Apache Airflow operator/plugin for integrating ML Spec-defined workflows.
+- [ ] Develop an Apache Airflow operator/plugin for integrating MLSpec -defined workflows.
 
 Our medium-term goals (6-12 months) include:
 
@@ -288,12 +288,12 @@ To ensure a welcoming and inclusive environment, we have adopted the [Contributo
 
 ## Acknowledgments
 
-We would like to express our gratitude to David Aronchick (@aronchick) and the authors and contributors of ML Spec for their pioneering work on this project. Their efforts have laid the foundation for what we aim to achieve.
+We would like to express our gratitude to David Aronchick (@aronchick) and the authors and contributors of MLSpec for their pioneering work on this project. Their efforts have laid the foundation for what we aim to achieve.
 
-## Help Shape The Future of ML Spec!
+## Help Shape The Future of MLSpec!
 
-We invite you to be a part of the ML Spec journey. Try out the new developments, provide feedback, and contribute your ideas and code. Together, we can shape the future of standardized and verifiable ML workflows.
+We invite you to be a part of the MLSpec journey. Try out the new developments, provide feedback, and contribute your ideas and code. Together, we can shape the future of standardized and verifiable ML workflows.
 
 For discussions and updates, stay tuned for upcoming mailing list and social accounts.
 
-We believe ML Spec has the potential to become a foundational tool for building reliable and governed ML pipelines, and we look forward to working with the community to realize this vision.
+We believe MLSpec has the potential to become a foundational tool for building reliable and governed ML pipelines, and we look forward to working with the community to realize this vision.
