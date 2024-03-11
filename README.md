@@ -11,13 +11,13 @@ ML Spec is an open-source framework for defining and verifying machine learning 
   - [New Maintainer](#new-maintainer)
 - [Background](#background)
   - [Foundational Work](#foundational-work)
-- [Existing Multi-Stage ML Workflows](#existing-multi-stage-ml-workflows)
+  - [Existing Multi-Stage ML Workflows](#existing-multi-stage-ml-workflows)
 - [Proposed Standards](#proposed-standards)
 - [End-to-End Complete Lifecycle](#end-to-end-complete-lifecycle)
+- [Repository Structure](#repository-structure)
 - [Vision and Direction](#vision-and-direction)
 - [Enhancing Model Interpretability and Trust](#enhancing-model-interpretability-and-trust)
 - [Roadmap](#roadmap)
-- [Repository Structure](#repository-structure)
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
 - [Acknowledgments](#acknowledgments)
@@ -52,7 +52,7 @@ ML Spec also draws inspiration from the MLSchema project, which has made signifi
 
 These resources provide valuable insights into the design principles and approaches behind ML workflow specification and have influenced the development of MLSpec.
 
-## Existing Multi-Stage ML Workflows
+### Existing Multi-Stage ML Workflows
 
 In recent years, several prominent companies and organizations have developed their own multi-stage ML workflow solutions to address the challenges of managing end-to-end machine learning pipelines. These projects have focused on combining ML and batch processing capabilities to create robust and scalable workflows.
 
@@ -75,6 +75,8 @@ Some notable examples of these multi-stage ML workflow solutions include:
 From studying these projects and their associated papers, we have identified a set of common steps that encompass the end-to-end machine learning workflow. These steps include data ingestion, data preparation, feature engineering, model training, model evaluation, model deployment, and monitoring.
 
 ML Spec aims to provide a standardized specification and framework for defining and executing these multi-stage ML workflows, drawing inspiration from the successful approaches and best practices established by these industry leaders.
+
+# Spec 
 
 ## Proposed Standards
 
