@@ -160,6 +160,64 @@ With ML Spec, we believe that every stage of an ML lifecycle requires some form 
 
 By capturing and managing metadata at each stage of the ML lifecycle, ML Spec aims to provide a comprehensive and standardized approach to ensuring the reproducibility, interpretability, and governance of end-to-end machine learning workflows.
 
+## Repository Structure
+
+- [common](./common)
+
+  - [object](./common/object.md)
+
+    General notes applicable to multiple objects in the system. How they are identified and named, basic operations, etc.
+
+- [data](./data)
+
+  - [datastore](datastore.md)
+
+    Data storages
+
+  - [datapath](./data/datapath.md)
+
+    Data references
+
+  - [artifact](artifact.md)
+
+    Data produced by runs
+
+  - [dataset](./data/dataset.md)
+
+    Named and versioned data in storage
+
+- [pipelines](./pipelines)
+
+  - [pipeline](pipeline.md)
+
+    DAG for executing computation on data and training and deploying models
+
+  - [module](module.md)
+
+    Reusable definition of computation, includes script, set of expected inputs, outputs, etc.
+
+- [experiment_tracking](./experiment_tracking)
+
+  - [run](./experiment_tracking/run.md)
+
+    Tracked execution of pipeline or single script on compute
+
+- [model_packaging](./model_packaging)
+
+  - [models](./model_packaging/README.md)
+
+    Trained models
+
+- logging_proto
+
+- monitoring_proto
+
+- [metadata_file](./metadata_file)
+
+  - [metadata](./metadata_file/metadata.yaml)
+
+    The metadata file used to recreate the ML workflow
+
 ## Vision and Direction
 
 Our vision for ML Spec is to establish it as a robust and widely adopted framework for defining, standardizing, and verifying complex ML workflows. We aim to:
@@ -216,34 +274,6 @@ Our medium-term goals (6-12 months) include:
 - [ ] Foster an active community of contributors and users.
 
 We welcome contributions from the community to refine and expand this roadmap.
-
-## Repository Structure
-
-- **common**
-  - **object**: General notes applicable to multiple objects in the system. How they are identified and named, basic operations, etc.
-
-- **data**
-  - **datastore**: Data storages
-  - **datapath**: Data references
-  - **artifact**: Data produced by runs
-  - **dataset**: Named and versioned data in storage
-
-- **pipelines**
-  - **pipeline**: DAG for executing computation on data and training and deploying models
-  - **module**: Reusable definition of computation, includes script, set of expected inputs, outputs, etc.
-
-- **experiment_tracking**
-  - **run**: Tracked execution of pipeline or single script on compute
-
-- **model_packaging**
-  - **models**: Trained models
-
-- **logging_proto**
-
-- **monitoring_proto**
-
-- **metadata_file**
-  - **metadata**: The metadata file used to recreate the ML workflow
 
 ## Contributing
 
