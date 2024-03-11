@@ -172,7 +172,7 @@ By capturing and managing metadata at each stage of the ML lifecycle, ML Spec ai
 
 - [data](./data)
 
-  - [datastore](datastore.md)
+  - [datastore](./data/datastore.md)
 
     Data storages
 
