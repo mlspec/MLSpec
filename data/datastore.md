@@ -1,6 +1,6 @@
-# DataStor
+# Datastore
 
-### DataStore
+### Datastore
 
 DataStores are objects which indicate the location of a stored data. Example of DataStore can be a SQL Database, or cloud storage account like an Azure Blob or AWS S3 bucket, or DBFS file system in a Databricks cluster. DataStore can be either a pointer to the data, or used to store various pieces of data, organized into files, folders, sql tables, etc. - depending on its type.
 
