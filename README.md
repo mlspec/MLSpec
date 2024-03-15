@@ -5,8 +5,6 @@ MLSpec is an open source framework for defining and verifying machine learning (
 
 ## Table of Contents
 
-- [Project Status](#project-status)
-  - [New Maintainer](#new-maintainer)
 - [Background](#background)
   - [Foundational Work](#foundational-work)
   - [Existing Multi-Stage ML Workflows](#existing-multi-stage-ml-workflows)
