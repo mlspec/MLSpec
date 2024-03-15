@@ -1,9 +1,7 @@
 ![MLSpec Logo](./docs/assets/logos/mlspec_logo.png#gh-light-mode-only)
 ![MLSpec Logo](./docs/assets/logos/mlspec_logo_light.png#gh-dark-mode-only)
 
-**MLSpec is being revived with renewed interest and active development!**
-
-MLSpec is an open-source framework for defining and verifying machine learning (ML) workflows.  The project aims to provide a standardized way to specify and validate the various stages of an ML pipeline, from data preprocessing to model training, evaluation, and deployment.
+MLSpec is an open source framework for defining and verifying machine learning (ML) workflows.  The project provides a standardized schema and libraries to specify and validate the various stages of an ML pipeline, from data preprocessing to model training, evaluation, and deployment.
 
 ## Table of Contents
 
@@ -12,8 +10,8 @@ MLSpec is an open-source framework for defining and verifying machine learning (
 - [Background](#background)
   - [Foundational Work](#foundational-work)
   - [Existing Multi-Stage ML Workflows](#existing-multi-stage-ml-workflows)
-- [Spec](#spec)
-  - [Proposed Standards](#proposed-standards)
+- [Specification](#specification)
+  - [MLSpec Standards](#mlspec-standards)
   - [End-to-End Complete Lifecycle](#end-to-end-complete-lifecycle)
   - [Repository Structure](#repository-structure)
 - [Vision and Direction](#vision-and-direction)
@@ -23,14 +21,6 @@ MLSpec is an open-source framework for defining and verifying machine learning (
 - [Code of Conduct](#code-of-conduct)
 - [Acknowledgments](#acknowledgments)
 [Help Shape The Future of MLSpec!](#help-shape-the-future-of-mlspec)
-
-## Project Status
-
-After a period of inactivity, MLSpec is now under new maintainership and undergoing a revitalization effort. We are committed to breathing new life into this project, aligning it with the latest advancements in the ML ecosystem and addressing the evolving needs of the community.
-
-### New Maintainer
-
-M42 has taken over the maintainership of MLSpec and are excited to steer its future development. For any inquiries or suggestions, please feel free to reach out to me at av@messier42.com or @invariantly.
 
 ## Background
 
@@ -77,13 +67,13 @@ From studying these projects and their associated papers, we have identified a s
 
 MLSpec aims to provide a standardized specification and framework for defining and executing these multi-stage ML workflows, drawing inspiration from the successful approaches and best practices established by these industry leaders.
 
-# Spec 
+# Specificiation 
 
-## Proposed Standards
+## MLSpec Standards
 
 MLSpec aims to establish a set of standards for various components involved in an end-to-end machine learning workflow. By defining these standards, MLSpec seeks to promote interoperability, reproducibility, and best practices across different ML tools and platforms.
 
-The proposed standards cover the following key areas:
+The standards cover the following key areas:
 
 1. **Workflow Orchestration**: MLSpec will define a standard set of endpoints that each step in an ML workflow should expose. These endpoints may include:
    - `/ok`: An endpoint to check the health and readiness of the step.
