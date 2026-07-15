@@ -36,7 +36,8 @@ These projects have paved the way for standardizing ML model serialization and m
 
 MLSpec also draws inspiration from the MLSchema project, which has made significant contributions to the field of ML workflow specification. Due to the instability of the original MLSchema website, we have mirrored some of their key resources here:
 
-- [MLSchema Paper](https://github.com/mlspec/MLSpec/blob/master/1807.05351.pdf)
+- [MLSchema Paper](https://github.com/mlspec/MLSpec/blob/main/1807.05351.pdf)
+- [ML-Schema: An interchangeable format for description of machine learning experiments](https://www.semantic-web-journal.net/system/files/swj2134.pdf)
 - [MLSchema Core Specification](https://github.com/mlspec/MLSpec/blob/master/ML%20Schema%20Core%20Specification.pdf)
 
 These resources provide valuable insights into the design principles and approaches behind ML workflow specification and have influenced the development of MLSpec.
