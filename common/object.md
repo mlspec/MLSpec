@@ -2,17 +2,15 @@
 
 All system managed objects generally have the following attributes and actions.
 
-TODO: clarify other criteria - spaces, acceptable characters, etc.
-
 ### Attributes
 
 - **Id**
 
   [*String, Required*] Id is system generated string, immutable and uniquely identifying an object. System must ensure its uniqueness within given workspace over the lifetime of the worksapce. Usually [UUIDs (GUIDs)](https://en.wikipedia.org/wiki/Universally_unique_identifier) are used for this.
 
-  Example: 123e4567-e89b-12d3-a456-426655440000
+  Example: `123e4567-e89b-12d3-a456-426655440000`
 
-  Max length: 40 characters
+The maximum length is 40 characters.
 
   Note: 40 characters is sufficient to represent either UUID or SHA-1 hashes as human readable strings.
 
@@ -22,7 +20,17 @@ TODO: clarify other criteria - spaces, acceptable characters, etc.
 
   Name is string assigned by user, uniquely identifying an object. It's mutable, and can be changed by user as long as it stays unique within specific scope at any moment of time among non-archived objects. Scope is usually workspace, but in some cases uniqueness can be enforced within smaller scope, such as artifact names are unique only within run.
 
-  Max length 255 characters.
+Additional criteria:
+- It should consist of alphanumeric characters, hyphens (-), and underscores (_).
+- It should start with an alphanumeric character.
+- It should not contain spaces or any other special characters.
+- It should be case-insensitive for uniqueness checks.
+- The maximum length is 255 characters.
+
+Examples of valid names:
+- `my-dataset`
+- `model_v1`
+- `preprocessing_pipeline_2`
 
   - **Status**
 
@@ -42,7 +50,7 @@ TODO: clarify other criteria - spaces, acceptable characters, etc.
 
   Arbitrary text description for given object.
 
-  Max length 32K characters. 
+The maximum length is 32K characters. 
 
 
 
